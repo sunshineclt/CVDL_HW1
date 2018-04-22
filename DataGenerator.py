@@ -6,21 +6,18 @@ new preprocessing methods, etc...
 from __future__ import absolute_import
 from __future__ import print_function
 
-import re
-from scipy import linalg
-import scipy.ndimage as ndi
-from six.moves import range
-import os
-from im_utils import *
-import threading
-import warnings
 import multiprocessing.pool
+import os
+import re
+import threading
 from functools import partial
 
+import scipy.ndimage as ndi
 from keras import backend as K
-from skimage import exposure
-
 from keras.utils.data_utils import Sequence
+from six.moves import range
+
+from im_utils import *
 
 try:
     from PIL import Image as pil_image
