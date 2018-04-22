@@ -9,9 +9,9 @@ if is_mac():
     PATH_VAL_IMAGE = '/Developer/Python/CVDL_data/HW1_data/transformed_validate/'
     PATH_TEST_BASE = ''
 elif is_linux():
-    PATH_TRAIN_BASE = ''
-    PATH_TRAIN_IMAGE = ''
-    PATH_VAL_IMAGE = ''
+    PATH_BASE = '/home/sunshine/Programming/CVDL/CVDL_data/HW1_data/'
+    PATH_TRAIN_IMAGE = '/home/sunshine/Programming/CVDL/CVDL_data/HW1_data/transformed_train'
+    PATH_VAL_IMAGE = '/home/sunshine/Programming/CVDL/CVDL_data/HW1_data/transformed_validate'
     PATH_TEST_BASE = ''
 else:
     raise Exception('No image data found.')
