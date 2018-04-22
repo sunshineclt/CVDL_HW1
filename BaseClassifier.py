@@ -5,7 +5,7 @@ from DataGenerator import DirectoryIterator
 from config import *
 from im_utils import func_batch_handle_with_multi_process, recycle_pool
 from tensorboard import StepTensorBoard
-from utils import context_creator, parse_weight_file
+from utils import context_creator, parse_weight_file, get_best_weights
 
 
 class BaseClassifier(object):
@@ -26,7 +26,12 @@ class BaseClassifier(object):
 
     def build_model(self):
         model = self.create_model()
-        # TODO: Add model param reload
+        self.weights = get_best_weights(os.path.dirname(self.path_weights))
+        if self.weights:
+            model.load_weights(self.weights)
+            print("Load %s successfully. " % self.weights)
+        else:
+            print("Model params not found. Thus start training from zero. ")
         return model
 
     def create_model(self):
