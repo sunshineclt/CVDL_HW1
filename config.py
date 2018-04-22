@@ -18,7 +18,6 @@ else:
 
 # train info
 IM_SIZE_299 = 299
-IM_SIZE_224 = 224
 BATCH_SIZE = 32
 CLASS_NUMBER = 80
 EPOCH = 100
