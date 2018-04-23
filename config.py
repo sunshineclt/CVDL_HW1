@@ -7,7 +7,7 @@ if is_mac():
     PATH_BASE = "/Developer/Python/CVDL_data/HW1_data/"
     PATH_TRAIN_IMAGE = '/Developer/Python/CVDL_data/HW1_data/transformed_train/'
     PATH_VAL_IMAGE = '/Developer/Python/CVDL_data/HW1_data/transformed_validate/'
-    PATH_TEST_BASE = ''
+    PATH_TEST_BASE = '/Developer/Python/CVDL_data/HW1_data/test/'
 elif is_linux():
     PATH_BASE = '/home/sunshine/Programming/CVDL/CVDL_data/HW1_data/'
     PATH_TRAIN_IMAGE = '/home/sunshine/Programming/CVDL/CVDL_data/HW1_data/transformed_train'
