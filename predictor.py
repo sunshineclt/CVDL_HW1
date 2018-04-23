@@ -73,6 +73,6 @@ if __name__ == '__main__':
     #         #                  "1_predict": prediction[0][0][0],
     #         #                  "2_predict": prediction[0][1][0],
     #         #                  "3_predict": prediction[0][2][0]})
-    path = os.path.join(config.PATH_TRAIN_IMAGE, "6/000100.jpg")
+    path = os.path.join(config.PATH_VAL_IMAGE, "0/000547.jpg")
     prediction = predictor(path, return_with_prob=True)
     print(prediction)
