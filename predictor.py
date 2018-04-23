@@ -67,9 +67,9 @@ if __name__ == '__main__':
         writer = csv.DictWriter(wf, delimiter=" ", fieldnames=["file", "1_predict", "2_predict", "3_predict"])
         for row in reader:
             path = os.path.join(config.PATH_BASE, row["file"])
-            prediction = predictor(path, return_with_prob=False)
+            prediction = predictor(path, return_with_prob=True)
             print(row["file"].split("/")[1], prediction)
-            writer.writerow({"file": row["file"],
-                             "1_predict": prediction[0][0],
-                             "2_predict": prediction[0][1],
-                             "3_predict": prediction[0][2]})
+            # writer.writerow({"file": row["file"],
+            #                  "1_predict": prediction[0][0][0],
+            #                  "2_predict": prediction[0][1][0],
+            #                  "3_predict": prediction[0][2][0]})
