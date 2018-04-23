@@ -1,7 +1,6 @@
 # coding=utf-8
 import os
-
-import numpy as np
+import csv
 
 import config
 from BaseClassifier import BaseClassifier
@@ -62,7 +61,15 @@ class KerasPredictor(Predictor):
 
 if __name__ == '__main__':
     predictor = KerasPredictor(ClassifierInceptionResnetV2("Inception_Resnet_V2"), 'val')
-    for filename in os.listdir(config.PATH_TEST_BASE):
-        path = os.path.join(config.PATH_TEST_BASE, filename)
-        prediction = predictor(path, return_with_prob=False)
-        print(filename, prediction)
+
+    with open(os.path.join(config.PATH_BASE, "test.info"), "r") as rf, open(os.path.join(config.PATH_BASE, "submit.info"), "w") as wf:
+        reader = csv.DictReader(rf, delimiter=" ", fieldnames=["file"])
+        writer = csv.DictWriter(wf, delimiter=" ", fieldnames=["file", "1_predict", "2_predict", "3_predict"])
+        for row in reader:
+            path = os.path.join(config.PATH_BASE, row["file"])
+            prediction = predictor(path, return_with_prob=False)
+            print(row["file"].split("/")[1], prediction)
+            writer.writerow({"file": row["file"],
+                             "1_predict": prediction[0][0],
+                             "2_predict": prediction[0][1],
+                             "3_predict": prediction[0][2]})
