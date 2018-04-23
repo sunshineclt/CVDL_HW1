@@ -14,17 +14,17 @@ elif is_linux():
         PATH_BASE = '/home/sunshine/Programming/CVDL/CVDL_data/HW1_data/'
         PATH_TRAIN_IMAGE = '/home/sunshine/Programming/CVDL/CVDL_data/HW1_data/transformed_train'
         PATH_VAL_IMAGE = '/home/sunshine/Programming/CVDL/CVDL_data/HW1_data/transformed_validate'
-        PATH_TEST_BASE = ''
+        PATH_TEST_BASE = '/home/sunshine/Programming/CVDL/CVDL_data/HW1_data/test/'
     elif hostName == "cvda-server":
         PATH_BASE = '/home/clt/Programming/CVDL/data/'
         PATH_TRAIN_IMAGE = '/home/clt/Programming/CVDL/data/transformed_train'
         PATH_VAL_IMAGE = '/home/clt/Programming/CVDL/data/transformed_validate'
-        PATH_TEST_BASE = ''
+        PATH_TEST_BASE = '/home/clt/Programming/CVDL/data/test'
     elif hostName == "cvda-game":
         PATH_BASE = '/home/clt/Programming/CVDL/data/'
         PATH_TRAIN_IMAGE = '/home/clt/Programming/CVDL/data/transformed_train'
         PATH_VAL_IMAGE = '/home/clt/Programming/CVDL/data/transformed_validate'
-        PATH_TEST_BASE = ''
+        PATH_TEST_BASE = '/home/clt/Programming/CVDL/data/test'
 else:
     raise Exception('No image data found.')
 
