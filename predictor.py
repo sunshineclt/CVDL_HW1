@@ -63,7 +63,7 @@ class KerasPredictor(Predictor):
 if __name__ == '__main__':
     path = os.path.join(config.PATH_TRAIN_IMAGE, '1/049531.jpg')
 
-    predictor = KerasPredictor(ClassifierInceptionResnetV2(), 'val')
+    predictor = KerasPredictor(ClassifierInceptionResnetV2("Inception_Resnet_V2"), 'val')
 
     prediction = predictor(path, return_with_prob=True)
     print(prediction)
