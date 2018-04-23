@@ -1,18 +1,30 @@
 # coding=utf-8
 from utils import *
-from utils import context_creator
+import socket
 
 # image path
+hostName = socket.gethostname()
 if is_mac():
     PATH_BASE = "/Developer/Python/CVDL_data/HW1_data/"
     PATH_TRAIN_IMAGE = '/Developer/Python/CVDL_data/HW1_data/transformed_train/'
     PATH_VAL_IMAGE = '/Developer/Python/CVDL_data/HW1_data/transformed_validate/'
     PATH_TEST_BASE = '/Developer/Python/CVDL_data/HW1_data/test/'
 elif is_linux():
-    PATH_BASE = '/home/sunshine/Programming/CVDL/CVDL_data/HW1_data/'
-    PATH_TRAIN_IMAGE = '/home/sunshine/Programming/CVDL/CVDL_data/HW1_data/transformed_train'
-    PATH_VAL_IMAGE = '/home/sunshine/Programming/CVDL/CVDL_data/HW1_data/transformed_validate'
-    PATH_TEST_BASE = ''
+    if hostName == "big-brother":
+        PATH_BASE = '/home/sunshine/Programming/CVDL/CVDL_data/HW1_data/'
+        PATH_TRAIN_IMAGE = '/home/sunshine/Programming/CVDL/CVDL_data/HW1_data/transformed_train'
+        PATH_VAL_IMAGE = '/home/sunshine/Programming/CVDL/CVDL_data/HW1_data/transformed_validate'
+        PATH_TEST_BASE = ''
+    elif hostName == "cvda-server":
+        PATH_BASE = '/home/clt/Programming/CVDL/data/'
+        PATH_TRAIN_IMAGE = '/home/clt/Programming/CVDL/data/transformed_train'
+        PATH_VAL_IMAGE = '/home/clt/Programming/CVDL/data/transformed_validate'
+        PATH_TEST_BASE = ''
+    elif hostName == "cvda-game":
+        PATH_BASE = '/home/clt/Programming/CVDL/data/'
+        PATH_TRAIN_IMAGE = '/home/clt/Programming/CVDL/data/transformed_train'
+        PATH_VAL_IMAGE = '/home/clt/Programming/CVDL/data/transformed_validate'
+        PATH_TEST_BASE = ''
 else:
     raise Exception('No image data found.')
 

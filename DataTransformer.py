@@ -38,11 +38,11 @@ if __name__ == '__main__':
         image_count = len(images)
         train_count += image_count // 5 * 4
         val_count += image_count - image_count // 5 * 4
-        # for image in images[:image_count // 5 * 4]:
-        #     image_name = os.path.basename(image)
-        #     shutil.copyfile(os.path.join(PATH_BASE_DIR, image), os.path.join(train_dir, image_name))
-        # for image in images[image_count // 5 * 4:]:
-        #     image_name = os.path.basename(image)
-        #     shutil.copyfile(os.path.join(PATH_BASE_DIR, image), os.path.join(val_dir, image_name))
+        for image in images[:image_count // 5 * 4]:
+            image_name = os.path.basename(image)
+            shutil.copyfile(os.path.join(PATH_BASE_DIR, image), os.path.join(train_dir, image_name))
+        for image in images[image_count // 5 * 4:]:
+            image_name = os.path.basename(image)
+            shutil.copyfile(os.path.join(PATH_BASE_DIR, image), os.path.join(val_dir, image_name))
     print(train_count)
     print(val_count)
