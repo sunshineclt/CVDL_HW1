@@ -61,18 +61,25 @@ class KerasPredictor(Predictor):
 
 if __name__ == '__main__':
     predictor = KerasPredictor(ClassifierInceptionResnetV2("Inception_Resnet_V2"), 'val')
+    transform_array = [0]
+    for i in range(1, 8):
+        transform_array.append(i)
+        for j in range(0, 10):
+            transform_array.append(int(str(i)+str(j)))
+    transform_array.extend([8, 9])
 
-    # with open(os.path.join(config.PATH_BASE, "test.info"), "r") as rf, open(os.path.join(config.PATH_BASE, "submit.info"), "w") as wf:
-    #     reader = csv.DictReader(rf, delimiter=" ", fieldnames=["file"])
-    #     writer = csv.DictWriter(wf, delimiter=" ", fieldnames=["file", "1_predict", "2_predict", "3_predict"])
-    #     for row in reader:
-    #         path = os.path.join(config.PATH_BASE, row["file"])
-    #         prediction = predictor(path, return_with_prob=True)
-    #         print(row["file"].split("/")[1], prediction)
-    #         writer.writerow({"file": row["file"],
-    #                          "1_predict": prediction[0][0][0],
-    #                          "2_predict": prediction[0][1][0],
-    #                          "3_predict": prediction[0][2][0]})
-    path = os.path.join(config.PATH_VAL_IMAGE, "12/004201.jpg")
-    prediction = predictor(path, return_with_prob=True)
-    print(prediction)
+    with open(os.path.join(config.PATH_BASE, "test.info"), "r") as rf, open(os.path.join(config.PATH_BASE, "submit.info"), "w") as wf:
+        reader = csv.DictReader(rf, delimiter=" ", fieldnames=["file"])
+        writer = csv.DictWriter(wf, delimiter=" ", fieldnames=["file", "1_predict", "2_predict", "3_predict"])
+        for row in reader:
+            path = os.path.join(config.PATH_BASE, row["file"])
+            prediction = predictor(path, return_with_prob=True)
+
+            print(row["file"].split("/")[1], prediction)
+            writer.writerow({"file": row["file"],
+                             "1_predict": transform_array[prediction[0][0][0]],
+                             "2_predict": transform_array[prediction[0][1][0]],
+                             "3_predict": transform_array[prediction[0][2][0]]})
+    # path = os.path.join(config.PATH_VAL_IMAGE, "12/004201.jpg")
+    # prediction = predictor(path, return_with_prob=True)
+    # print(prediction)
