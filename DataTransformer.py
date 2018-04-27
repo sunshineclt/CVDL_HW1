@@ -1,6 +1,7 @@
 import csv
 import os
 import shutil
+import numpy as np
 
 import config
 
@@ -28,6 +29,7 @@ if __name__ == '__main__':
     image2label, label2image = parse_mapping()
     train_count = 0
     val_count = 0
+    # a = []
     for label, images in label2image.items():
         train_dir = os.path.join(PATH_TRAIN_SAVE_DIR, label)
         if not os.path.exists(train_dir):
@@ -36,6 +38,8 @@ if __name__ == '__main__':
         if not os.path.exists(val_dir):
             os.makedirs(val_dir)
         image_count = len(images)
+        # print(label, image_count)
+        # a.append(image_count)
         train_count += image_count // 5 * 4
         val_count += image_count - image_count // 5 * 4
         for image in images[:image_count // 5 * 4]:
@@ -46,3 +50,5 @@ if __name__ == '__main__':
             shutil.copyfile(os.path.join(PATH_BASE_DIR, image), os.path.join(val_dir, image_name))
     print(train_count)
     print(val_count)
+    # print(np.array(a).min())
+    # print(np.array(a).max())
